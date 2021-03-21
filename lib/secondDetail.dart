@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
 
-class SecondDetail extends StatelessWidget{
+
+class SecondDetail extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
+    TextEditingController controller = new TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Second page'),
+        title: Text('Second Page'),
       ),
       body: Container(
         child: Center(
-          child: RaisedButton(
-            onPressed: () {
-              Navigator.of(context).pushReplacementNamed('/third');
-            },
-            child: Text("go back to third page")
+          child: Column(
+            children: <Widget>[
+              TextField(
+                controller: controller,
+                keyboardType: TextInputType.text,
+              ),
+              RaisedButton(
+                onPressed: () {
+                  Navigator.of(context).pop(controller.value.text);
+                },
+                child: Text('Todo 저장하기'),
+              ),
+            ],
           ),
         ),
       ),
